@@ -549,6 +549,44 @@ body::before {
     font-size: 11px;
 }
 
+.pair-market-toggle,
+.forex-market-toggle {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+    flex-shrink: 0;
+}
+
+.pair-market-btn,
+.forex-market-btn {
+    flex: 1;
+    min-width: 0;
+    text-align: center;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 10px 8px;
+    border-radius: var(--radius-sm);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+.pair-market-btn:hover,
+.forex-market-btn:hover {
+    border-color: var(--border-hover);
+    color: var(--text);
+}
+
+.pair-market-btn.active,
+.forex-market-btn.active {
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    border-color: transparent;
+    box-shadow: 0 2px 12px var(--accent-glow);
+    color: #fff;
+}
+
 .pairs-toolbar {
     display: flex;
     align-items: center;
@@ -1114,12 +1152,28 @@ body::before {
 
 .scan-result__verdict {
     flex-shrink: 0;
-    font-size: 12px;
-    font-weight: 600;
-    padding: 4px 10px;
-    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid var(--border);
+}
+
+.scan-result__arrow {
+    display: block;
+    width: 24px;
+    height: 24px;
+}
+
+.scan-result__arrow-path {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.5;
+    stroke-linecap: butt;
+    stroke-linejoin: miter;
 }
 
 .scan-result--up .scan-result__verdict {

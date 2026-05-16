@@ -110,6 +110,10 @@
                     <p class="flow-panel__sub" id="pairsScreenSubtitle">Choose your trading pair</p>
                 </header>
                 <div class="flow-step__body">
+                <div class="pair-market-toggle" id="marketKindToggle" hidden>
+                    <button type="button" class="pair-market-btn active" data-market-kind="standard" aria-pressed="true" title="Стандартный рынок">Stock</button>
+                    <button type="button" class="pair-market-btn" data-market-kind="otc" aria-pressed="false" title="Внебиржевые котировки">OTC</button>
+                </div>
                 <div class="pairs-toolbar">
                     <div class="search-bar search-bar--compact">
                         <i class="fas fa-search"></i>
