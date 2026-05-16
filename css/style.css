@@ -682,10 +682,15 @@ body::before {
 .pair-card__mark {
     width: 36px;
     height: 36px;
+    flex-shrink: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 8px;
+    border-radius: 50%;
+    overflow: visible;
+}
+
+.pair-card__mark--text {
     font-weight: 700;
     font-size: 11px;
     letter-spacing: -0.02em;
@@ -693,9 +698,62 @@ body::before {
     color: var(--text-muted);
 }
 
-.pair-card.is-selected .pair-card__mark {
+.pair-card__mark--flags {
+    background: transparent;
+}
+
+.pair-card__flag {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--bg);
+    box-sizing: border-box;
+    background: var(--bg-card);
+    flex-shrink: 0;
+}
+
+.pair-card__mark--flags .pair-card__flag:first-child,
+.pair-card__mark--flags .pair-card__mark-fallback:first-child {
+    margin-right: -7px;
+    z-index: 1;
+}
+
+.pair-card__mark--flags .pair-card__flag:last-child,
+.pair-card__mark--flags .pair-card__mark-fallback:last-child {
+    z-index: 2;
+}
+
+.pair-card__mark-fallback {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    background: rgba(255, 255, 255, 0.08);
+    border: 2px solid var(--bg);
+    color: var(--text-muted);
+    flex-shrink: 0;
+    box-sizing: border-box;
+}
+
+.pair-card.is-selected .pair-card__mark--text {
     background: var(--accent);
     color: #fff;
+}
+
+.pair-card.is-selected .pair-card__flag,
+.pair-card.is-selected .pair-card__mark-fallback {
+    border-color: rgba(139, 92, 246, 0.55);
+}
+
+.pair-card.is-selected .pair-card__mark-fallback {
+    background: rgba(139, 92, 246, 0.22);
+    color: #e9d5ff;
 }
 
 .pair-card__body {
@@ -853,10 +911,10 @@ body::before {
 }
 
 .tf-chip.is-selected {
-    background: rgba(139, 92, 246, 0.12);
-    border-color: rgba(139, 92, 246, 0.45);
+    background: rgba(139, 92, 246, 0.08);
+    border: 1px solid rgba(139, 92, 246, 0.55);
     color: #fff;
-    box-shadow: none;
+    box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.35);
 }
 
 #timeframeScreen .btn-primary--flow {
