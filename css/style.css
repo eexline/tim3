@@ -28,9 +28,11 @@
     --safe-right: env(safe-area-inset-right, 0px);
     --tg-content-safe-top: 0px;
     --tg-content-safe-bottom: 0px;
+    --tg-chrome-top-extra: 0px;
     --app-height: 100vh;
     --content-gap: 16px;
-    --header-offset: calc(max(var(--chrome-gap), var(--safe-top)) + var(--chrome-bar-height) + var(--content-gap));
+    --chrome-safe-top: max(var(--chrome-gap), var(--safe-top), var(--tg-content-safe-top, 0px));
+    --header-offset: calc(var(--chrome-safe-top) + var(--tg-chrome-top-extra) + var(--chrome-bar-height) + var(--content-gap));
 }
 
 * {
@@ -120,7 +122,7 @@ body::before {
 
 .app-chrome--top {
     top: 0;
-    padding-top: max(var(--chrome-gap), env(safe-area-inset-top));
+    padding-top: calc(var(--chrome-safe-top) + var(--tg-chrome-top-extra));
 }
 
 .app-chrome--top .chrome-bar {
@@ -2747,10 +2749,7 @@ body.lang-modal-open {
 
 html.tg-webapp {
     --app-height: 100vh;
-    --header-offset: calc(
-        max(var(--chrome-gap), var(--safe-top), var(--tg-content-safe-top, 0px)) +
-            var(--chrome-bar-height) + var(--content-gap)
-    );
+    --tg-chrome-top-extra: 52px;
     height: 100%;
 }
 
@@ -2783,7 +2782,7 @@ html.tg-webapp .app-chrome--bottom.hidden {
 }
 
 html.tg-webapp .app-chrome--top {
-    padding-top: max(var(--chrome-gap), var(--safe-top), var(--tg-content-safe-top, 0px));
+    padding-top: calc(var(--chrome-safe-top) + var(--tg-chrome-top-extra));
 }
 
 html.tg-webapp .app-chrome--bottom {
